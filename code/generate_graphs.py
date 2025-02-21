@@ -38,9 +38,12 @@ def plot_graph(G, title="Graphe"):
 if __name__ == "__main__":
     G_clique = generate_clique(5)
     plot_graph(G_clique, "Clique (n=5)")
+    plt.show()  # 🔥 Forcer l'affichage sur Colab
 
     G_random = generate_random_graph(5, 0.5)
     plot_graph(G_random, "Graphe Aléatoire (n=5, p=0.5)")
+    plt.show()  # 🔥 Forcer l'affichage sur Colab
 
     G_planar = generate_planar_graph(5)
     plot_graph(G_planar, "Graphe Planaire (n=5)")
+    plt.show()  # 🔥 Forcer l'affichage sur Colab
