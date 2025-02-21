@@ -12,11 +12,20 @@ def generate_random_graph(n, p=0.5):
     G = nx.erdos_renyi_graph(n, p)
     return G
 
+from scipy.spatial import Delaunay
+
 def generate_planar_graph(n):
-    """ Génère un graphe planaire en utilisant un graphe de Delaunay. """
-    points = np.random.rand(n, 2)
-    G = nx.delaunay_graph(points)
+    points = np.random.rand(n, 2)  # Générer n points aléatoires dans le plan
+    tri = Delaunay(points)  # Calcul de la triangulation de Delaunay
+
+    G = nx.Graph()
+    for simplex in tri.simplices:
+        for i in range(3):  # Un triangle a 3 sommets
+            for j in range(i + 1, 3):
+                G.add_edge(tuple(points[simplex[i]]), tuple(points[simplex[j]]))
+
     return G
+
 
 def plot_graph(G, title="Graphe"):
     """ Affiche le graphe donné. """
