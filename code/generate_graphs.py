@@ -32,7 +32,7 @@ def plot_graph(G, title="Graphe"):
     plt.figure(figsize=(6, 6))
     nx.draw(G, with_labels=True, node_color="lightblue", edge_color="gray")
     plt.title(title)
-    plt.show()
+    plt.show(block=True)  # 🔥 Forcer l'affichage sur Google Colab
 
 # Exemple d'utilisation
 if __name__ == "__main__":
